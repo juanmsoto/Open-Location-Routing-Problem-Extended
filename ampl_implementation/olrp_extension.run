@@ -1,0 +1,123 @@
+reset;
+
+# Load model and data
+model olrp_extension.mod;
+data olrp_extension.dat;
+
+# Solve
+option solver cplex;
+option cplex_options 'timelimit=600 mipgap=0.03';
+solve;
+
+# ============================================
+# PRINT SOLUTION SUMMARY
+# ============================================
+
+printf "\n====================\n";
+printf   "      SOLUTION\n";
+printf   "====================\n\n";
+
+printf "Total Cost: %f\n", TotalCost;
+printf "Total Emissions (approx): %f\n\n",
+    sum {i in NODES, j in CUSTOMERS, v in VEHICLES} EF[v] * c[i,j] * x[i,j,v];
+
+printf "Open Depots:\n";
+for {k in DEPOTS: y[k] > 0.5} {
+    printf "  Depot %d\n", k;
+}
+printf "\n";
+
+
+# ============================================
+# PRINT ROUTES
+# ============================================
+
+param current_node integer;
+param next_node    integer;
+param visited {NODES} binary;
+
+printf "====================\n";
+printf "        ROUTES\n";
+printf "====================\n\n";
+
+# For each opened depot
+for {k in DEPOTS: y[k] > 0.5} {
+
+    printf "\nRoutes starting at depot %d:\n", k;
+
+    # For each vehicle type
+    for {v in VEHICLES} {
+
+        # Each arc (k,j,v) with x[k,j,v] = 1 corresponds to a route start
+        for {j in CUSTOMERS: x[k,j,v] > 0.5} {
+
+            # Initialize visited flags for this route
+            for {i in NODES} let visited[i] := 0;
+            let visited[k] := 1;   # depot
+            let visited[j] := 1;   # first customer
+
+            printf "Route (vehicle: %s): %d -> %d", v, k, j;
+            let current_node := j;
+
+            # Move forward up to |NODES| steps to avoid infinite loops
+            for {step in 1..card(NODES)} {
+
+                # Look for the next customer h such that:
+                # - x[current_node,h,v] = 1 (arc used)
+                # - h has not been visited yet
+                let next_node := 0;
+                for {h in CUSTOMERS: x[current_node,h,v] > 0.5 and visited[h] = 0} {
+                    let next_node := h;
+                    break;
+                }
+
+                # If there is no such next customer, the route ends
+                if next_node = 0 then {
+                    printf "\n";
+                    break;
+                }
+
+                printf " -> %d", next_node;
+                let visited[next_node] := 1;
+                let current_node := next_node;
+            }
+
+        } # end loop over j
+
+    } # end loop over v
+
+} # end loop over depots
+
+
+# ============================================
+# PRINT RAW DECISION VARIABLES
+# ============================================
+
+printf "\n====================\n";
+printf   "   DECISION VARIABLES\n";
+printf   "====================\n\n";
+
+# y[k]: depot opening
+printf "Depot opening variables y[k]:\n";
+for {k in DEPOTS} {
+    printf "  y[%d] = %d\n", k, round(y[k]);
+}
+printf "\n";
+
+# z[i,k]: customer-to-depot assignment
+printf "Customer-to-depot assignment z[i,k] (only z[i,k] = 1):\n";
+for {i in CUSTOMERS, k in DEPOTS: z[i,k] > 0.5} {
+    printf "  z[%d,%d] = 1\n", i, k;
+}
+printf "\n";
+
+# x[i,j,v]: arcs actually used in the solution
+printf "Route arc variables x[i,j,v] (only x[i,j,v] = 1):\n";
+for {i in NODES, j in NODES, v in VEHICLES: x[i,j,v] > 0.5} {
+    printf "  x[%d,%d,%s] = 1\n", i, j, v;
+}
+printf "\n";
+
+printf "\n====================\n";
+printf   "     END OF RUN\n";
+printf   "====================\n\n";

@@ -1,0 +1,362 @@
+{
+  "total_cost": 1274.0061513637638,
+  "total_emissions": 345.749796925423,
+  "open_depots": [
+    2,
+    5
+  ],
+  "assignments": [
+    {
+      "customer": 6,
+      "depot": 2
+    },
+    {
+      "customer": 7,
+      "depot": 2
+    },
+    {
+      "customer": 8,
+      "depot": 2
+    },
+    {
+      "customer": 9,
+      "depot": 2
+    },
+    {
+      "customer": 10,
+      "depot": 2
+    },
+    {
+      "customer": 11,
+      "depot": 2
+    },
+    {
+      "customer": 12,
+      "depot": 2
+    },
+    {
+      "customer": 13,
+      "depot": 2
+    },
+    {
+      "customer": 14,
+      "depot": 2
+    },
+    {
+      "customer": 15,
+      "depot": 2
+    },
+    {
+      "customer": 16,
+      "depot": 2
+    },
+    {
+      "customer": 17,
+      "depot": 2
+    },
+    {
+      "customer": 18,
+      "depot": 2
+    },
+    {
+      "customer": 19,
+      "depot": 5
+    },
+    {
+      "customer": 20,
+      "depot": 2
+    },
+    {
+      "customer": 21,
+      "depot": 5
+    },
+    {
+      "customer": 22,
+      "depot": 2
+    },
+    {
+      "customer": 23,
+      "depot": 5
+    },
+    {
+      "customer": 24,
+      "depot": 5
+    },
+    {
+      "customer": 25,
+      "depot": 5
+    },
+    {
+      "customer": 26,
+      "depot": 2
+    }
+  ],
+  "arcs": [
+    {
+      "i": 2,
+      "j": 11,
+      "vehicle": "small"
+    },
+    {
+      "i": 2,
+      "j": 14,
+      "vehicle": "large"
+    },
+    {
+      "i": 2,
+      "j": 15,
+      "vehicle": "medium"
+    },
+    {
+      "i": 5,
+      "j": 24,
+      "vehicle": "large"
+    },
+    {
+      "i": 6,
+      "j": 8,
+      "vehicle": "large"
+    },
+    {
+      "i": 7,
+      "j": 6,
+      "vehicle": "large"
+    },
+    {
+      "i": 8,
+      "j": 9,
+      "vehicle": "large"
+    },
+    {
+      "i": 9,
+      "j": 2,
+      "vehicle": "large"
+    },
+    {
+      "i": 10,
+      "j": 7,
+      "vehicle": "large"
+    },
+    {
+      "i": 11,
+      "j": 13,
+      "vehicle": "small"
+    },
+    {
+      "i": 12,
+      "j": 10,
+      "vehicle": "large"
+    },
+    {
+      "i": 13,
+      "j": 16,
+      "vehicle": "small"
+    },
+    {
+      "i": 14,
+      "j": 12,
+      "vehicle": "large"
+    },
+    {
+      "i": 15,
+      "j": 17,
+      "vehicle": "medium"
+    },
+    {
+      "i": 16,
+      "j": 18,
+      "vehicle": "small"
+    },
+    {
+      "i": 17,
+      "j": 20,
+      "vehicle": "medium"
+    },
+    {
+      "i": 18,
+      "j": 2,
+      "vehicle": "small"
+    },
+    {
+      "i": 19,
+      "j": 23,
+      "vehicle": "large"
+    },
+    {
+      "i": 20,
+      "j": 22,
+      "vehicle": "medium"
+    },
+    {
+      "i": 21,
+      "j": 19,
+      "vehicle": "large"
+    },
+    {
+      "i": 22,
+      "j": 26,
+      "vehicle": "medium"
+    },
+    {
+      "i": 23,
+      "j": 25,
+      "vehicle": "large"
+    },
+    {
+      "i": 24,
+      "j": 21,
+      "vehicle": "large"
+    },
+    {
+      "i": 25,
+      "j": 5,
+      "vehicle": "large"
+    },
+    {
+      "i": 26,
+      "j": 2,
+      "vehicle": "medium"
+    }
+  ],
+  "coords": {
+    "1": [
+      136,
+      194
+    ],
+    "2": [
+      143,
+      237
+    ],
+    "3": [
+      136,
+      216
+    ],
+    "4": [
+      137,
+      204
+    ],
+    "5": [
+      128,
+      197
+    ],
+    "6": [
+      151,
+      264
+    ],
+    "7": [
+      159,
+      261
+    ],
+    "8": [
+      130,
+      254
+    ],
+    "9": [
+      128,
+      252
+    ],
+    "10": [
+      163,
+      247
+    ],
+    "11": [
+      146,
+      246
+    ],
+    "12": [
+      161,
+      242
+    ],
+    "13": [
+      142,
+      239
+    ],
+    "14": [
+      163,
+      236
+    ],
+    "15": [
+      148,
+      232
+    ],
+    "16": [
+      128,
+      231
+    ],
+    "17": [
+      156,
+      217
+    ],
+    "18": [
+      129,
+      214
+    ],
+    "19": [
+      146,
+      208
+    ],
+    "20": [
+      164,
+      208
+    ],
+    "21": [
+      141,
+      206
+    ],
+    "22": [
+      147,
+      193
+    ],
+    "23": [
+      164,
+      193
+    ],
+    "24": [
+      129,
+      189
+    ],
+    "25": [
+      155,
+      185
+    ],
+    "26": [
+      139,
+      182
+    ]
+  },
+  "depots": [
+    1,
+    2,
+    3,
+    4,
+    5
+  ],
+  "customers": [
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17,
+    18,
+    19,
+    20,
+    21,
+    22,
+    23,
+    24,
+    25,
+    26
+  ],
+  "vehicles": [
+    "small",
+    "medium",
+    "large"
+  ]
+}

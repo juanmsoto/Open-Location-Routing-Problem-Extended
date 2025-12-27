@@ -1,0 +1,133 @@
+data;
+
+# =========================
+# Sets
+# =========================
+
+set DEPOTS := 1 2 3 4 5;
+
+set CUSTOMERS := 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26;
+
+set VEHICLES := small medium large;
+
+# =========================
+# Node coordinates
+# =========================
+
+param: X Y :=
+   1   136 194
+   2   143 237
+   3   136 216
+   4   137 204
+   5   128 197
+   6   151 264
+   7   159 261
+   8   130 254
+   9   128 252
+   10  163 247
+   11  146 246
+   12  161 242
+   13  142 239
+   14  163 236
+   15  148 232
+   16  128 231
+   17  156 217
+   18  129 214
+   19  146 208
+   20  164 208
+   21  141 206
+   22  147 193
+   23  164 193
+   24  129 189
+   25  155 185
+   26  139 182 ;
+
+# =========================
+# Customer demands
+# =========================
+
+param d :=
+   6   1100
+   7    700
+   8    800
+   9   1400
+   10  2100
+   11   400
+   12   800
+   13   100
+   14   500
+   15   600
+   16  1200
+   17  1300
+   18  1300
+   19   300
+   20   900
+   21  2100
+   22  1000
+   23   900
+   24  2500
+   25  1800
+   26   700 ;
+
+# =========================
+# Depot capacities and opening costs
+# =========================
+
+param CD :=
+   1 15000
+   2 15000
+   3 15000
+   4 15000
+   5 15000 ;
+
+param FD :=
+   1 50
+   2 50
+   3 50
+   4 50
+   5 50 ;
+
+# =========================
+# Cost scale for distance-based travel cost
+# =========================
+
+param scale := 1;
+
+# =========================
+# Heterogeneous vehicle fleet parameters
+# =========================
+
+# - small: light van; low cost, low capacity, low emissions
+# - medium: standard delivery truck
+# - large: heavy truck; high capacity, higher cost and emissions
+
+# Vehicle capacities
+param CV :=
+   small   3000
+   medium  5000
+   large   8000 ;
+
+# Fixed vehicle cost 
+param FV :=
+   small   120
+   medium  160
+   large   220 ;
+
+# Economic cost multiplier per unit of distance
+# c_base[i,j,v] = alpha[v] * distance(i,j)
+param alpha :=
+   small   0.70
+   medium  1.00
+   large   1.15 ;
+
+# Emission factor (kg-CO2 per unit distance)
+param EF :=
+   small   0.40
+   medium  0.75
+   large   1.80 ;
+
+# Weight ($ * kg-CO2) that converts emissions into cost in the generalized objective
+param lambda := 0.5;
+
+# Maximum allowed total emissions
+param Emax := 400;
